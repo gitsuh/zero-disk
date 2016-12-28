@@ -13,6 +13,8 @@ function zero-drive {
 .NOTES
    All inputs are mandatory.
    Does not work for NTFS folder mounts (junctions).
+   Assumes write permissions exist for <driveletter>:\ to create temp folder, or temp folder already exists.
+   Goal of code is to be a faster solution to sdelete.exe -z
 .Link
 	https://github.com/good-paste/zero-drive
 .COMPONENT
@@ -28,19 +30,21 @@ function zero-drive {
 		[string]$driveletter
 		)
 	Begin {  
-		Write-Verbose "Preparing environment." 
-		Write-Host "Input drive letter (example: C: D: F:)"
 		$starttime = get-date
 		$drive = ($driveletter).ToUpper()
 		$folder = "\temp\"
 		$filename = "tempzerofill"
 		$tempfile = $drive + $folder + $filename
+		#assumes permissions to write to the specified root of drive, or "driveletter:\temp\" already exists
 		New-Item -ItemType Directory -Force -Path ($drive + $folder)
+
 		if(Test-Path $tempfile) {
+			Write-Host "Deleting file $tempfile"
 			Remove-Item $tempfile -Force
 		}
 		$freespace = (Get-WmiObject Win32_LogicalDisk -Filter "DeviceID='$drive'").freespace/1024/1024/1024
 		$freespace = $freespace - ($freespace * .1)
+		# 1MB for performance reasons
 		$arraysize= 1mb
 		$append = "GB"
 		$fileSize= [string]$freespace + $append
@@ -56,7 +60,7 @@ function zero-drive {
 				$size += $buffer.Length;
 			}
 		} Catch {
-			write-host "failure"
+			write-host "Write failure"
 			Write-host $_
 		}
 		finally {
@@ -69,7 +73,8 @@ function zero-drive {
 	}
 	End {
 	
-		read-host
+		Write-host "Deleting $tempfile"
 		Remove-Item $tempfile
+		
 	}
 }
