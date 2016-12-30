@@ -1,11 +1,11 @@
-function zero-drive {
+function zero-disk {
 <#
 .Synopsis
    Zero fills a drive to deflate virtual disk
 .DESCRIPTION
    Creates a file containing zeros the size of 10% less than the total freesize of the specified drive letter.
 .EXAMPLE
-   zero-drive -driveletter c:
+   zero-disk -driveletter c:
 .INPUTS
    -driveletter "Specify the driveletter in c: format"
 .OUTPUTS
