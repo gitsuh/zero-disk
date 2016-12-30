@@ -53,7 +53,7 @@ function zero-disk {
 	}
 	Process {
 		Write-Host "Creating $filesize zero fill temp file"
-		try {
+		Try {
 			$size = 0
 			while($size -lt $fileSize) {
 				$stream.Write($buffer, 0, $buffer.Length);
@@ -63,7 +63,7 @@ function zero-disk {
 			write-host "Write failure"
 			Write-host $_
 		}
-		finally {
+		Finally {
 			if($stream) {
 				$stream.Close();
 			}
