@@ -12,6 +12,7 @@
    zero-drive -driveletter c:
    
 .INPUTS
+
    -driveletter "Specify the driveletter in c: format"
    
 .OUTPUTS
