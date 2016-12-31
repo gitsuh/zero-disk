@@ -75,6 +75,5 @@ function zero-drive {
 	
 		Write-host "Deleting $tempfile"
 		Remove-Item $tempfile
-		
 	}
 }
