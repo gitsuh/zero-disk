@@ -44,7 +44,7 @@ function zero-disk {
 		}
 		$freespace = (Get-WmiObject Win32_LogicalDisk -Filter "DeviceID='$drive'").freespace/1024/1024/1024
 		$freespace = $freespace - ($freespace * .1)
-		# 1MB for performance reasons
+		# 1MB for performance reasons VMFS
 		$arraysize= 1mb
 		$append = "GB"
 		$fileSize= [string]$freespace + $append
