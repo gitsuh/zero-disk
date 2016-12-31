@@ -1,11 +1,11 @@
-function zero-drive {
+function zero-disk {
 <#
 .Synopsis
    Zero fills a drive to deflate virtual disk
 .DESCRIPTION
    Creates a file containing zeros the size of 10% less than the total freesize of the specified drive letter.
 .EXAMPLE
-   zero-drive -driveletter c:
+   zero-disk -driveletter c:
 .INPUTS
    -driveletter "Specify the driveletter in c: format"
 .OUTPUTS
@@ -44,7 +44,7 @@ function zero-drive {
 		}
 		$freespace = (Get-WmiObject Win32_LogicalDisk -Filter "DeviceID='$drive'").freespace/1024/1024/1024
 		$freespace = $freespace - ($freespace * .1)
-		# 1MB for performance reasons
+		# 1MB for performance reasons VMFS
 		$arraysize= 1mb
 		$append = "GB"
 		$fileSize= [string]$freespace + $append
@@ -53,7 +53,7 @@ function zero-drive {
 	}
 	Process {
 		Write-Host "Creating $filesize zero fill temp file"
-		try {
+		Try {
 			$size = 0
 			while($size -lt $fileSize) {
 				$stream.Write($buffer, 0, $buffer.Length);
@@ -63,7 +63,7 @@ function zero-drive {
 			write-host "Write failure"
 			Write-host $_
 		}
-		finally {
+		Finally {
 			if($stream) {
 				$stream.Close();
 			}
