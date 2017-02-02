@@ -17,8 +17,6 @@ function zero-disk {
    Goal of code is to be a faster solution to sdelete.exe -z
 .COMPONENT
    The component this cmdlet belongs to nothing.
-.ROLE
-   The role this cmdlet belongs to nothing.
 .FUNCTIONALITY
    Creates a file containing zeros the size of 1% less than the total freesize of the specified drive letter.
 #>
