@@ -5,7 +5,7 @@
    
 .DESCRIPTION
 
-   Creates a file containing zeros the size of 10% less than the total freesize of the specified drive letter.
+   Creates a file containing zeros the size of 5% less than the total freesize of the specified drive letter.
    
 .EXAMPLE
 
@@ -40,4 +40,4 @@ https://github.com/good-paste/zero-drive
    
 .FUNCTIONALITY
 
-   Creates a file containing zeros the size of 10% less than the total freesize of the specified drive letter.
+   Creates a file containing zeros the size of 5% less than the total freesize of the specified drive letter.
