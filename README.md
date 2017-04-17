@@ -1,7 +1,7 @@
 # zero-disk
 .Synopsis
 
-   Zero fills a drive to deflate virtual disk
+   Zero fills a drive to deflate virtual disk (mostly stolen from an EMC script)
    
 .DESCRIPTION
 
