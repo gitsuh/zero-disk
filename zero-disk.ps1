@@ -1,7 +1,7 @@
 function zero-disk {
 <#
 .Synopsis
-   Zero fills a drive to deflate virtual disk
+   Zero fills a drive to deflate virtual disk (mostly stolen from an EMC script)
 .DESCRIPTION
    Creates a file containing zeros the size of 5% less than the total freesize of the specified drive letter.
 .EXAMPLE
