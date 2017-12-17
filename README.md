@@ -25,11 +25,7 @@
    Does not work for NTFS folder mounts (junctions).
    Assumes write permissions exist for <driveletter>:\ to create temp folder, or temp folder already exists.
    Goal of code is to be a faster solution to sdelete.exe -z
-   
-.Link
-
-https://github.com/good-paste/zero-drive
-        
+           
 .COMPONENT
 
    The component this cmdlet belongs to nothing.
